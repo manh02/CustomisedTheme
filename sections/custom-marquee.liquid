@@ -1,58 +1,28 @@
 {{ 'section-apps.css' | asset_url | stylesheet_tag }}
 
-<div class="wt-apps__wrapper">
+<div class="wt-apps__wrapper" style="background: {{ section.settings.background_color }};">
   <div class="shopify-block shopify-app-block">
     <div class="supermarquee">
-      <div class="marquee-wrap">
+      <div class="marquee-wrap" style="animation-duration: {{ section.settings.scroll_speed }}s;">
         <ul class="marquee-content">
-          <li>
-            <span class="sell-up"><strong>Shea butter mask</strong> - <strong>60000+</strong> orders delivered</span>
-            <span class="sell-down"><strong>99%</strong> less split ends</span>
-          </li>
-          <li>
-            <span class="sell-up"><strong>Scalpsense hair fall shampoo</strong> - <strong>20000+</strong> orders delivered</span>
-            <span class="sell-down">Reduces hairfall by <strong>88%</strong></span>
-          </li>
-          <li>
-            <span class="sell-up"><strong>Dandruff vaccine</strong> - <strong>15000+</strong> orders delivered</span>
-            <span class="sell-down"><strong>92%</strong> dandruff reduction</span>
-          </li>
-          <li>
-            <span class="sell-up"><strong>Botoplexx shampoo</strong> - <strong>120000+</strong> orders delivered</span>
-            <span class="sell-down">Reduces frizz by <strong>98%</strong></span>
-          </li>
-          <li>
-            <span class="sell-up"><strong>Botoliss biotin shampoo</strong> - <strong>69000+</strong> orders delivered</span>
-            <span class="sell-down"><strong>75%</strong> less breakage</span>
-          </li>
-          <li>
-            <span class="sell-up"><strong>Shea retention shampoo</strong> - <strong>75000+</strong> orders delivered</span>
-          </li>
+          {% for block in section.blocks %}
+            <li>
+              <span class="sell-up"><strong>{{ block.settings.product_name }}</strong> - <strong>{{ block.settings.orders_delivered }}</strong> orders delivered</span>
+              {% if block.settings.benefit != blank %}
+                <span class="sell-down">{{ block.settings.benefit }}</span>
+              {% endif %}
+            </li>
+          {% endfor %}
         </ul>
         <ul class="marquee-content" aria-hidden="true">
-          <li>
-            <span class="sell-up"><strong>Shea butter mask</strong> - <strong>60000+</strong> orders delivered</span>
-            <span class="sell-down"><strong>99%</strong> less split ends</span>
-          </li>
-          <li>
-            <span class="sell-up"><strong>Scalpsense hair fall shampoo</strong> - <strong>20000+</strong> orders delivered</span>
-            <span class="sell-down">Reduces hairfall by <strong>88%</strong></span>
-          </li>
-          <li>
-            <span class="sell-up"><strong>Dandruff vaccine</strong> - <strong>15000+</strong> orders delivered</span>
-            <span class="sell-down"><strong>92%</strong> dandruff reduction</span>
-          </li>
-          <li>
-            <span class="sell-up"><strong>Botoplexx shampoo</strong> - <strong>120000+</strong> orders delivered</span>
-            <span class="sell-down">Reduces frizz by <strong>98%</strong></span>
-          </li>
-          <li>
-            <span class="sell-up"><strong>Botoliss biotin shampoo</strong> - <strong>69000+</strong> orders delivered</span>
-            <span class="sell-down"><strong>75%</strong> less breakage</span>
-          </li>
-          <li>
-            <span class="sell-up"><strong>Shea retention shampoo</strong> - <strong>75000+</strong> orders delivered</span>
-          </li>
+          {% for block in section.blocks %}
+            <li>
+              <span class="sell-up"><strong>{{ block.settings.product_name }}</strong> - <strong>{{ block.settings.orders_delivered }}</strong> orders delivered</span>
+              {% if block.settings.benefit != blank %}
+                <span class="sell-down">{{ block.settings.benefit }}</span>
+              {% endif %}
+            </li>
+          {% endfor %}
         </ul>
       </div>
     </div>
@@ -178,13 +148,66 @@
       "step": 1,
       "unit": "px",
       "label": "Font Size",
-      "default": 12
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "s",
+      "label": "Scroll Speed",
+      "default": 45
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product Name",
+          "default": "Product Name"
+        },
+        {
+          "type": "text",
+          "id": "orders_delivered",
+          "label": "Orders Delivered",
+          "default": "1000+"
+        },
+        {
+          "type": "text",
+          "id": "benefit",
+          "label": "Benefit",
+          "default": "99% customer satisfaction"
+        }
+      ]
     }
   ],
   "presets": [
     {
       "name": "Custom Marquee",
-      "category": "Custom"
+      "blocks": [
+        {
+          "type": "product",
+          "settings": {
+            "product_name": "Product 1",
+            "orders_delivered": "1000+",
+            "benefit": "99% customer satisfaction"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "product_name": "Product 2",
+            "orders_delivered": "2000+",
+            "benefit": "95% customer satisfaction"
+          }
+        }
+      ]
     }
   ]
 }

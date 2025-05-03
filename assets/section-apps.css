@@ -2,6 +2,7 @@
   width: 100%;
   position: relative;
   background: #000000;
+  z-index: 100;
 }
 
 .shopify-block {
@@ -13,6 +14,7 @@
   white-space: nowrap;
   position: relative;
   width: 100%;
+  background: #000000;
 }
 
 .marquee-wrap {
@@ -33,9 +35,10 @@
 .marquee-content li {
   color: #D1E2D7;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  font-size: 12px;
-  line-height: 1;
+  font-size: 14px;
+  line-height: 1.2;
   border-right: 1px solid #cccccc;
+  padding: 5px 0;
 }
 
 .marquee-content li span {
@@ -86,7 +89,11 @@
 /* Responsive styles */
 @media screen and (max-width: 749px) {
   .wt-apps__wrapper {
-    display: none;
+    display: block;
+  }
+  
+  .marquee-content li {
+    font-size: 12px;
   }
 }
 
