@@ -1,0 +1,219 @@
+{{ 'section-apps.css' | asset_url | stylesheet_tag }}
+
+<div class="wt-apps__wrapper">
+  <div class="shopify-block shopify-app-block">
+    <div class="supermarquee">
+      <div class="marquee-wrap">
+        <ul class="marquee-content">
+          {%- for block in section.blocks -%}
+            <li>
+              <span class="sell-up">
+                <strong>{{ block.settings.product_name }}</strong> - 
+                <strong>{{ block.settings.orders_delivered }}</strong> orders delivered
+              </span>
+              {%- if block.settings.benefit_text != blank -%}
+                <span class="sell-down">
+                  {%- if block.settings.benefit_percentage != blank -%}
+                    <strong>{{ block.settings.benefit_percentage }}</strong>
+                  {%- endif -%}
+                  {{ block.settings.benefit_text }}
+                </span>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+        <ul class="marquee-content" aria-hidden="true">
+          {%- for block in section.blocks -%}
+            <li>
+              <span class="sell-up">
+                <strong>{{ block.settings.product_name }}</strong> - 
+                <strong>{{ block.settings.orders_delivered }}</strong> orders delivered
+              </span>
+              {%- if block.settings.benefit_text != blank -%}
+                <span class="sell-down">
+                  {%- if block.settings.benefit_percentage != blank -%}
+                    <strong>{{ block.settings.benefit_percentage }}</strong>
+                  {%- endif -%}
+                  {{ block.settings.benefit_text }}
+                </span>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .supermarquee {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+  }
+  
+  .marquee-wrap {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 45s linear infinite;
+  }
+  
+  .marquee-content {
+    display: flex;
+    gap: 15px;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    background: {{ section.settings.background_color }};
+  }
+  
+  .marquee-content li {
+    color: {{ section.settings.text_color }};
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    font-size: {{ section.settings.font_size }}px;
+    line-height: 1;
+    border-right: 1px solid {{ section.settings.border_color }};
+  }
+  
+  .marquee-content li span {
+    display: inline-block;
+    padding: 1px 15px 1px 15px;
+    position: relative;
+  }
+  
+  .marquee-content li .sell-up {
+    position: relative;
+  }
+  
+  .marquee-content li .sell-up:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -3px;
+    left: 0px;
+    border: 5px solid transparent;
+    border-bottom: 8px solid {{ section.settings.up_arrow_color }};
+  }
+  
+  .marquee-content li .sell-down:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 4px;
+    left: 0px;
+    border: 5px solid transparent;
+    border-top: 8px solid {{ section.settings.down_arrow_color }};
+  }
+  
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .supermarquee:hover .marquee-wrap {
+    animation-play-state: paused;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Marquee",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#D1E2D7"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "color",
+      "id": "up_arrow_color",
+      "label": "Up Arrow Color",
+      "default": "#00FF00"
+    },
+    {
+      "type": "color",
+      "id": "down_arrow_color",
+      "label": "Down Arrow Color",
+      "default": "#FF0000"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 12
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product Name",
+          "default": "Product Name"
+        },
+        {
+          "type": "text",
+          "id": "orders_delivered",
+          "label": "Orders Delivered",
+          "default": "1000+"
+        },
+        {
+          "type": "text",
+          "id": "benefit_percentage",
+          "label": "Benefit Percentage",
+          "default": "99%"
+        },
+        {
+          "type": "text",
+          "id": "benefit_text",
+          "label": "Benefit Text",
+          "default": "less split ends"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Marquee",
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 
