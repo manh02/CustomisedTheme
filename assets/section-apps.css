@@ -1,0 +1,22 @@
+.wt-apps__wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.shopify-block {
+  width: 100%;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 749px) {
+  .wt-apps__wrapper {
+    display: none;
+  }
+}
+
+/* Animation speed control */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-wrap {
+    animation-duration: 60s !important;
+  }
+} 
