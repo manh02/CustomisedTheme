@@ -5,40 +5,54 @@
     <div class="supermarquee">
       <div class="marquee-wrap">
         <ul class="marquee-content">
-          {%- for block in section.blocks -%}
-            <li>
-              <span class="sell-up">
-                <strong>{{ block.settings.product_name }}</strong> - 
-                <strong>{{ block.settings.orders_delivered }}</strong> orders delivered
-              </span>
-              {%- if block.settings.benefit_text != blank -%}
-                <span class="sell-down">
-                  {%- if block.settings.benefit_percentage != blank -%}
-                    <strong>{{ block.settings.benefit_percentage }}</strong>
-                  {%- endif -%}
-                  {{ block.settings.benefit_text }}
-                </span>
-              {%- endif -%}
-            </li>
-          {%- endfor -%}
+          <li>
+            <span class="sell-up"><strong>Shea butter mask</strong> - <strong>60000+</strong> orders delivered</span>
+            <span class="sell-down"><strong>99%</strong> less split ends</span>
+          </li>
+          <li>
+            <span class="sell-up"><strong>Scalpsense hair fall shampoo</strong> - <strong>20000+</strong> orders delivered</span>
+            <span class="sell-down">Reduces hairfall by <strong>88%</strong></span>
+          </li>
+          <li>
+            <span class="sell-up"><strong>Dandruff vaccine</strong> - <strong>15000+</strong> orders delivered</span>
+            <span class="sell-down"><strong>92%</strong> dandruff reduction</span>
+          </li>
+          <li>
+            <span class="sell-up"><strong>Botoplexx shampoo</strong> - <strong>120000+</strong> orders delivered</span>
+            <span class="sell-down">Reduces frizz by <strong>98%</strong></span>
+          </li>
+          <li>
+            <span class="sell-up"><strong>Botoliss biotin shampoo</strong> - <strong>69000+</strong> orders delivered</span>
+            <span class="sell-down"><strong>75%</strong> less breakage</span>
+          </li>
+          <li>
+            <span class="sell-up"><strong>Shea retention shampoo</strong> - <strong>75000+</strong> orders delivered</span>
+          </li>
         </ul>
         <ul class="marquee-content" aria-hidden="true">
-          {%- for block in section.blocks -%}
-            <li>
-              <span class="sell-up">
-                <strong>{{ block.settings.product_name }}</strong> - 
-                <strong>{{ block.settings.orders_delivered }}</strong> orders delivered
-              </span>
-              {%- if block.settings.benefit_text != blank -%}
-                <span class="sell-down">
-                  {%- if block.settings.benefit_percentage != blank -%}
-                    <strong>{{ block.settings.benefit_percentage }}</strong>
-                  {%- endif -%}
-                  {{ block.settings.benefit_text }}
-                </span>
-              {%- endif -%}
-            </li>
-          {%- endfor -%}
+          <li>
+            <span class="sell-up"><strong>Shea butter mask</strong> - <strong>60000+</strong> orders delivered</span>
+            <span class="sell-down"><strong>99%</strong> less split ends</span>
+          </li>
+          <li>
+            <span class="sell-up"><strong>Scalpsense hair fall shampoo</strong> - <strong>20000+</strong> orders delivered</span>
+            <span class="sell-down">Reduces hairfall by <strong>88%</strong></span>
+          </li>
+          <li>
+            <span class="sell-up"><strong>Dandruff vaccine</strong> - <strong>15000+</strong> orders delivered</span>
+            <span class="sell-down"><strong>92%</strong> dandruff reduction</span>
+          </li>
+          <li>
+            <span class="sell-up"><strong>Botoplexx shampoo</strong> - <strong>120000+</strong> orders delivered</span>
+            <span class="sell-down">Reduces frizz by <strong>98%</strong></span>
+          </li>
+          <li>
+            <span class="sell-up"><strong>Botoliss biotin shampoo</strong> - <strong>69000+</strong> orders delivered</span>
+            <span class="sell-down"><strong>75%</strong> less breakage</span>
+          </li>
+          <li>
+            <span class="sell-up"><strong>Shea retention shampoo</strong> - <strong>75000+</strong> orders delivered</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -167,52 +181,10 @@
       "default": 12
     }
   ],
-  "blocks": [
-    {
-      "type": "product",
-      "name": "Product",
-      "settings": [
-        {
-          "type": "text",
-          "id": "product_name",
-          "label": "Product Name",
-          "default": "Product Name"
-        },
-        {
-          "type": "text",
-          "id": "orders_delivered",
-          "label": "Orders Delivered",
-          "default": "1000+"
-        },
-        {
-          "type": "text",
-          "id": "benefit_percentage",
-          "label": "Benefit Percentage",
-          "default": "99%"
-        },
-        {
-          "type": "text",
-          "id": "benefit_text",
-          "label": "Benefit Text",
-          "default": "less split ends"
-        }
-      ]
-    }
-  ],
   "presets": [
     {
       "name": "Custom Marquee",
-      "blocks": [
-        {
-          "type": "product"
-        },
-        {
-          "type": "product"
-        },
-        {
-          "type": "product"
-        }
-      ]
+      "category": "Custom"
     }
   ]
 }
